@@ -1,0 +1,63 @@
+# Definition of support functions
+# one function to calculate the slope & intercept for both curves
+def outputline(x5, x6, y5, y6):
+    if x5 == x6 or y5 == y6:
+        print("the points you entered belong to vertical or horizontal lines")
+        return 0, 0
+    else:
+        m2 = ((y6 - y5) / (x6 - x5))
+        b2 = (y5 - (m2 * x5))
+        print("The slope of your line is {}, the intercept of your line is {}.".format(m2, b2))
+        return m2, b2
+
+
+# one function to calculate the intercept point
+def outputintercept(m, b, m1, b1, p):
+    if p == 1 or m == b:
+        return 0
+    else:
+        x = (b1 - b) / (m - m1)
+        y = (m1 * x + b1)
+        print("The intercept point between the two lines is at x{} & y{}.".format(x, y))
+        return 0
+
+
+# one function to check if the lines are parallel
+def checkingparallel(a, c, b, d):
+    if a == c and b != d:
+        print("the coordinates you entered belong to two parallel lines")
+        return 1
+    else:
+        print("No parallel lines")
+        return 0
+
+
+# define main function to call on support functions
+def main():
+    # get user input
+    x1 = input("Enter your x1 coordinate:")
+    y1 = input("Enter your y1 coordinate:")
+    x2 = input("Enter your x2 coordinate:")
+    y2 = input("Enter your y2 coordinate:")
+    x3 = input("Enter your x3 coordinate:")
+    y3 = input("Enter your y3 coordinate:")
+    x4 = input("enter your x4 coordinate:")
+    y4 = input("Enter your y4 coordinate:")
+    # convert user input into integer
+    x1 = int(x1)
+    x2 = int(x2)
+    x3 = int(x3)
+    x4 = int(x4)
+    y1 = int(y1)
+    y2 = int(y2)
+    y3 = int(y3)
+    y4 = int(y4)
+    # call functions to perform output operations
+    a, b = outputline(x1, x2, y1, y2)
+    c, d = outputline(x3, x4, y3, y4)
+    p = checkingparallel(a, c, b, d)
+    outputintercept(a, b, c, d, p)
+    return 0
+
+
+main()
